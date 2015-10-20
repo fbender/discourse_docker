@@ -513,13 +513,13 @@ run_start(){
    done
 
    (
-     hostname=`hostname`
+     syshostname=`hostname -f`
      # overwrite hostname
      if [ "$DOCKER_USE_HOSTNAME" = "true" ]
      then
        hostname=$DISCOURSE_HOSTNAME
      else
-       hostname=$hostname-$config
+       hostname=discourse-$config.$syshostname
      fi
 
      set -x
